@@ -1,15 +1,227 @@
 ---
+import { SEO } from "astro-seo";
+import { Icon } from "astro-icon";
+import MainLayout from "../layouts/MainLayout.astro";
+import myPic from "../assets/me.avif";
+import TechSlide from "../components/TechSlide.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import ProjectSection from "../components/ProjectSection.astro";
+import QnA from "../components/QnA.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout>
+  <Fragment slot="head">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/open-props/shadows.min.css"
+    />
+    <SEO title="Rudhi Mediastara -- Home Page" />
+  </Fragment>
+
+  <div
+    style="background-image: url(/banner.avif);"
+    class="hero grid min-h-[40vmax] place-items-center bg-pink-500 bg-cover bg-bottom text-white shadow-xl shadow-pink-900/40"
+  >
+    <div class="w-11/12 py-4 text-right">
+      <div
+        class="greet font-secondary text-2xl font-bold capitalize tracking-tighter sm:text-3xl md:text-4xl lg:text-5xl"
+        data-hero-intersect
+        role="heading"
+      >
+        hi, i am rudhi
+      </div>
+      <div class="sub-greet" data-hero-intersect>Web Developer</div>
+    </div>
+  </div>
+  <div class="mt-24 min-h-screen">
+    <section
+      class="fluid-container border-1 flex gap-4 rounded-md border bg-white py-8 px-4 shadow-md shadow-pink-900/20 max-sm:flex-col"
+    >
+      <div class="flex flex-col gap-4 text-center">
+        <h2
+          class="font-secondary text-2xl font-bold tracking-tighter sm:text-3xl lg:text-5xl"
+        >
+          Lorem ipsum dolor sit amet consectetur adipisicing.
+        </h2>
+        <p class="bodycopy">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt
+          recusandae porro nemo.
+        </p>
+        <ul class="mt-auto flex justify-center gap-4 text-pink-800">
+          <li>
+            <a href="#!" class="hover:text-black">
+              <Icon name="mdi:github" width="32" />
+            </a>
+          </li>
+          <li>
+            <a href="#!" class="hover:text-black">
+              <Icon name="mdi:twitter-circle" width="32" />
+            </a>
+          </li>
+          <li>
+            <a href="#!" class="hover:text-black">
+              <Icon name="mdi:facebook" width="32" />
+            </a>
+          </li>
+          <li>
+            <a href="#!" class="hover:text-black">
+              <Icon name="ri:instagram-line" width="32" />
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="grid place-items-center">
+        <img
+          src={myPic}
+          alt="Rudhi Mediastara photo"
+          class="ava max-w-[300px] object-contain saturate-[0.75] max-sm:w-[200px]"
+        />
+      </div>
+    </section>
+
+    <section
+      class="rope mt-[168px] grid min-h-[480px] place-items-center bg-stone-900 text-neutral-50 shadow-2xl"
+      style="background-image: url(/pattern.svg);"
+    >
+      <swiper-container
+        class="swiper-ctn"
+        slides-per-view="1"
+        mousewheel-force-to-axis="true"
+        navigation="true"
+        pagination="true"
+        autoplay="true"
+        autoplay-delay="5000"
+        css-mode="true"
+      >
+        <h2
+          slot="container-start"
+          class="subheading text-center capitalize text-neutral-50"
+        >
+          Lorem ipsum dolor sit amet.
+        </h2>
+        <swiper-slide>
+          <TechSlide iconName="logos:astro">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
+            cum!
+          </TechSlide>
+        </swiper-slide>
+        <swiper-slide>
+          <TechSlide iconName="logos:tailwindcss-icon">
+            Lorem ipsum dolor sit amet consectetur adipisicing.
+          </TechSlide>
+        </swiper-slide>
+        <swiper-slide>
+          <TechSlide iconName="logos:postcss">
+            Lorem ipsum dolor sit amet consectetur adipisicing.
+          </TechSlide>
+        </swiper-slide>
+        <swiper-slide>
+          <TechSlide iconName="logos:svelte-icon">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
+            ducimus!
+          </TechSlide>
+        </swiper-slide>
+        <swiper-slide>
+          <TechSlide iconName="logos:solidjs-icon">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
+            ducimus!
+          </TechSlide>
+        </swiper-slide>
+        <swiper-slide>
+          <TechSlide iconName="logos:react">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
+            ducimus!
+          </TechSlide>
+        </swiper-slide>
+      </swiper-container>
+    </section>
+    <ProjectSection title="Personal Projects">
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+    </ProjectSection>
+    <ProjectSection title="Frontend Mentor Projects">
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+      <ProjectCard />
+    </ProjectSection>
+    <section
+      class="qa mt-[160px] flex min-h-[640px] flex-col gap-4 bg-gradient-to-r from-stone-400 via-slate-800 to-rose-500 py-4"
+    >
+      <h2 class="subheading text-center text-neutral-50">F.A.Q</h2>
+      <div
+        class="fluid-container rounded-lg bg-white/40 p-4 shadow-xl shadow-neutral-900/40 backdrop-blur-xl"
+      >
+        <QnA question="ksdokfodkf" answer="answer" />
+        <QnA question="ksdokfodkf" answer="answer" />
+        <QnA question="ksdokfodkf" answer="answer" />
+        <QnA question="ksdokfodkf" answer="answer" />
+      </div>
+    </section>
+  </div>
+</MainLayout>
+
+<style lang="scss">
+  .hero {
+    background-blend-mode: multiply;
+  }
+
+  .ava {
+    clip-path: circle(50% at 50%);
+  }
+
+  .rope {
+    background-blend-mode: color-dodge;
+  }
+
+  .swiper-ctn {
+    width: 90%;
+    height: max-content;
+    background: radial-gradient(
+      50% 50% at 50% 50%,
+      #f7bfd7 0%,
+      rgba(119, 119, 119, 0.46) 100%
+    );
+    backdrop-filter: blur(1px);
+    padding: 1rem;
+    border-radius: 0.25rem;
+    box-shadow: var(--inner-shadow-6);
+    --swiper-navigation-color: white;
+    --swiper-pagination-color: #fce7f3;
+    --swiper-navigation-size: 1rem;
+
+    @media (min-width: 640px) {
+      width: 80%;
+    }
+
+    @media (min-width: 768px) {
+      width: 70%;
+    }
+
+    @media (min-width: 1024px) {
+      width: 60%;
+    }
+
+    & swiper-slide {
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+    }
+  }
+
+  .qa {
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 75%,
+      75% 75%,
+      75% 100%,
+      50% 75%,
+      0% 75%
+    );
+  }
+</style>
+
+<script src="../scripts/home.js"></script>

@@ -1,0 +1,121 @@
+---
+import "@fontsource/archivo/variable.css";
+import "@fontsource/red-hat-display/variable.css";
+import "../styles/tailwind.css";
+import { Icon } from "astro-icon";
+import Copyright from "../components/Copyright.astro";
+
+const navigations = [
+  { href: "/about", label: "about" },
+  { href: "#!", label: "projects" },
+  { href: "/#!", label: "resume" },
+  { href: "/#!", label: "contact" },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.png" />
+    <slot name="head">
+      <title>Rudhi Mediastara</title>
+    </slot>
+  </head>
+  <body class="bg-neutral-50 font-primary font-normal">
+    <header
+      class="fixed z-navbar w-full border-b border-b-neutral-300/70 bg-neutral-50/80 shadow-lg backdrop-blur-sm [&.hero]:bg-transparent [&.hero]:text-white [&.hero]:shadow-neutral-400/30"
+      data-hero-intersect
+    >
+      <nav class="fluid-container flex items-center gap-4 py-4">
+        <a href="/" class="z-ornament [&.drawer]:text-white" data-nav-agent>
+          <Icon name="logo" width="40" height="40" />
+        </a>
+        <span class="max-sm:hidden">
+          <Icon name="rbrand" height="40" />
+        </span>
+        <div class="z-ornament ml-auto sm:hidden">
+          <input
+            type="checkbox"
+            class="peer sr-only"
+            id="menu-toggle"
+            aria-expanded="false"
+          />
+          <label
+            for="menu-toggle"
+            class="grid hover:cursor-pointer peer-focus-visible:outline peer-focus-visible:outline-1 [&.drawer]:text-white"
+            data-nav-agent
+          >
+            <span class="sr-only">Menu</span>
+            <Icon name="ci:menu-alt-05" width="32" data-nav-agent />
+            <Icon name="ci:close-big" width="32" data-nav-agent />
+          </label>
+        </div>
+
+        <div
+          class="ml-auto max-sm:fixed max-sm:inset-0 max-sm:z-drawer max-sm:grid max-sm:h-screen max-sm:w-screen max-sm:-translate-x-[9999em] max-sm:place-items-center max-sm:bg-rose-900/80 [&.drawer]:translate-x-0 [&.drawer]:text-white [&.drawer]:transition-transform [&.drawer]:duration-500 [&.not(.drawer)]:opacity-0"
+          data-nav-agent
+        >
+          <ul
+            class="flex gap-4 font-secondary font-thin uppercase tracking-wider [&.drawer]:flex-col [&.drawer]:gap-8 [&.drawer]:text-center"
+            data-nav-agent
+          >
+            {
+              navigations.map((navigation, index) => (
+                <li id={`navigation-${index + 1}`}>
+                  <a
+                    href={navigation.href}
+                    class="hover:font-normal hover:tracking-[0.2em]"
+                  >
+                    {navigation.label}
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <footer class="mt-[320px] bg-rose-800">
+      <Copyright />
+    </footer>
+  </body>
+</html>
+
+<style lang="scss">
+  %ga {
+    grid-area: 1/1/1/1;
+  }
+
+  %tr {
+    transition: clip-path 0.7s ease-in-out 0.5s;
+  }
+
+  [astro-icon="ci:menu-alt-05"] {
+    @extend %ga;
+    @extend %tr;
+
+    &.drawer {
+      @extend %tr;
+      clip-path: circle(0% at 0%);
+    }
+  }
+
+  [astro-icon="ci:close-big"] {
+    @extend %ga;
+
+    clip-path: circle(0% at 0%);
+
+    &.drawer {
+      @extend %tr;
+      clip-path: circle(100%);
+    }
+  }
+</style>
+
+<script src="../scripts/main.js"></script>

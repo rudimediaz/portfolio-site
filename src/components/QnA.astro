@@ -1,0 +1,15 @@
+---
+interface Props {
+  question: string;
+  answer: string;
+}
+
+const { question, answer } = Astro.props;
+---
+
+<div tabindex="0" class="du-collapse du-collapse-arrow rounded-md">
+  <div class="du-collapse-title font-medium text-neutral-800">{question}</div>
+  <div class="du-collapse-content text-neutral-700">
+    <p>{answer}</p>
+  </div>
+</div>

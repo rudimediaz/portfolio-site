@@ -1,0 +1,18 @@
+---
+import { Icon } from "astro-icon";
+
+interface Props {
+  iconName: string;
+}
+
+const { iconName } = Astro.props;
+---
+
+<figure class="grid grid-rows-[200px_auto] place-items-center">
+  <div>
+    <Icon name={iconName} width="128" />
+  </div>
+  <p class="text-center">
+    <slot />
+  </p>
+</figure>
