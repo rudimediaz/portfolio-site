@@ -1,12 +1,19 @@
 ---
 import { SEO } from "astro-seo";
-import { Icon } from "astro-icon";
 import MainLayout from "../layouts/MainLayout.astro";
 import myPic from "../assets/me.avif";
 import TechSlide from "../components/TechSlide.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import ProjectSection from "../components/ProjectSection.astro";
 import QnA from "../components/QnA.astro";
+import LogosTailwindcssIcon from "~icons/logos/tailwindcss-icon";
+import LogosAstro from "~icons/logos/astro";
+import LogosRemix from "~icons/logos/remix";
+import LogosReact from "~icons/logos/react";
+import MdiGithub from "~icons/mdi/github";
+import MdiTwitter from "~icons/mdi/twitter";
+import MdiFacebook from "~icons/mdi/facebook";
+import MdiInstagram from "~icons/mdi/instagram";
 ---
 
 <MainLayout>
@@ -50,22 +57,26 @@ import QnA from "../components/QnA.astro";
         <ul class="mt-auto flex justify-center gap-4 text-pink-800">
           <li>
             <a href="#!" class="hover:text-black">
-              <Icon name="mdi:github" width="32" />
+              <MdiGithub width={32} height={32} />
+              <span class="sr-only">My Github URL</span>
             </a>
           </li>
           <li>
             <a href="#!" class="hover:text-black">
-              <Icon name="mdi:twitter-circle" width="32" />
+              <MdiTwitter width={32} height={32} />
+              <span class="sr-only">My Twitter URL</span>
             </a>
           </li>
           <li>
             <a href="#!" class="hover:text-black">
-              <Icon name="mdi:facebook" width="32" />
+              <MdiFacebook width={32} height={32} />
+              <span class="sr-only">My Facebook URL</span>
             </a>
           </li>
           <li>
             <a href="#!" class="hover:text-black">
-              <Icon name="ri:instagram-line" width="32" />
+              <MdiInstagram width={32} height={32} />
+              <span class="sr-only">My Instagram URL</span>
             </a>
           </li>
         </ul>
@@ -92,6 +103,7 @@ import QnA from "../components/QnA.astro";
         autoplay="true"
         autoplay-delay="5000"
         css-mode="true"
+        loop={true}
       >
         <h2
           slot="container-start"
@@ -100,35 +112,27 @@ import QnA from "../components/QnA.astro";
           Lorem ipsum dolor sit amet.
         </h2>
         <swiper-slide>
-          <TechSlide iconName="logos:astro">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
-            cum!
+          <TechSlide>
+            <LogosAstro width={128} height="5rem" slot="icon" />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, cum!
           </TechSlide>
         </swiper-slide>
         <swiper-slide>
-          <TechSlide iconName="logos:tailwindcss-icon">
+          <TechSlide>
+            <LogosTailwindcssIcon width={128} height="5rem" slot="icon" />
             Lorem ipsum dolor sit amet consectetur adipisicing.
           </TechSlide>
         </swiper-slide>
         <swiper-slide>
-          <TechSlide iconName="logos:postcss">
-            Lorem ipsum dolor sit amet consectetur adipisicing.
-          </TechSlide>
-        </swiper-slide>
-        <swiper-slide>
-          <TechSlide iconName="logos:svelte-icon">
+          <TechSlide>
+            <LogosRemix width={128} slot="icon" height="5rem" />
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
             ducimus!
           </TechSlide>
         </swiper-slide>
         <swiper-slide>
-          <TechSlide iconName="logos:solidjs-icon">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
-            ducimus!
-          </TechSlide>
-        </swiper-slide>
-        <swiper-slide>
-          <TechSlide iconName="logos:react">
+          <TechSlide>
+            <LogosReact width={128} slot="icon" height="5rem" />
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto,
             ducimus!
           </TechSlide>
